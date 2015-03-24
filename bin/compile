@@ -56,3 +56,12 @@ fi
 
 $LUA "$OPT_DIR/prepare.lua" $ROCKSPEC $OPT_DIR 2>&1 | indent
 
+# Setting environment variables in .profile.d script (sourced at dyno startup)
+mkdir -p "$BUILD_DIR"/.profile.d
+cat <<EOF >"$BUILD_DIR"/.profile.d/lua.sh
+PATH=/app/bin:\$PATH
+export LD_LIBRARY_PATH=/app/packages/lib:$LD_LIBRARY_PATH
+export LUA_CPATH="./?.so;/app/packages/lib/lua/5.1/?.so"
+export LUA_PATH="./?.lua;/app/packages/share/lua/5.1/?.lua;/app/packages/share/lua/5.1/?/init.lua"
+export STACK=$STACK
+EOF
