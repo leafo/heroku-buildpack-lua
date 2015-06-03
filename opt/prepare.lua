@@ -75,5 +75,8 @@ if not success then
 end
 for _index_0 = 1, #extras do
   local extra = extras[_index_0]
-  install.run(extra)
+  ok, err, exitcode = install.run(extra)
+  if not ok then
+    error(err)
+  end
 end
