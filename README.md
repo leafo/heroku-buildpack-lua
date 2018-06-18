@@ -20,7 +20,7 @@ $ heroku create --buildpack http://github.com/leafo/heroku-buildpack-lua.git
 In order to describe the dependencies of you application you must create a
 [rockspec][4] for it.
 
-The first file found that matches `*.rockpsec` in the root directory will be
+The first file found that matches `*.rockspec` in the root directory will be
 used. Don't put multiple ones in the root directory otherwise it might get
 confused.
 
